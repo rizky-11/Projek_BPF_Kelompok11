@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-display: Georgia, 'Times New Roman', serif;
+}
+
+/* Warna bertema kertas: putih krem, tinta gelap, aksen kraft (coklat kertas). */
+:root {
+    --background: oklch(0.985 0.008 85);
+    --foreground: oklch(0.24 0.02 60);
+    --card: oklch(1 0 0);
+    --primary: oklch(0.5 0.09 55);
+    --primary-foreground: oklch(0.99 0.005 85);
+    --secondary: oklch(0.95 0.015 85);
+    --muted: oklch(0.96 0.01 85);
+    --muted-foreground: oklch(0.5 0.02 60);
+    --accent: oklch(0.93 0.035 80);
+    --accent-foreground: oklch(0.38 0.07 55);
+    --destructive: oklch(0.55 0.2 27);
+    --destructive-foreground: oklch(1 0 0);
+    --success: oklch(0.5 0.12 150);
+    --border: oklch(0.9 0.015 80);
+    --input: oklch(0.88 0.015 80);
+    --ring: oklch(0.5 0.09 55);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-success: var(--success);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+}
+
+@layer base {
+    * { @apply border-border; }
+    body { @apply bg-background text-foreground; }
+    h1, h2 { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+@layer components {
+    .input { @apply w-full rounded-md border border-input bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring; }
+    .label { @apply mb-1 block text-sm font-medium; }
+    .err { @apply mt-1 text-xs text-destructive; }
+    .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50; }
+    .btn-primary { @apply bg-primary text-primary-foreground hover:bg-primary/90; }
+    .btn-outline { @apply border border-input bg-card hover:bg-accent; }
+    .btn-danger { @apply text-destructive hover:underline; }
+    .chip { @apply inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm hover:bg-accent; }
+    .chip-active { @apply border-primary bg-primary text-primary-foreground hover:bg-primary; }
+    .card { @apply rounded-xl border border-border bg-card; }
+    .badge { @apply inline-block rounded-full px-2.5 py-0.5 text-xs font-medium; }
+}
